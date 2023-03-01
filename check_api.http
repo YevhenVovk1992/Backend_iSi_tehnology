@@ -4,7 +4,22 @@ Content-Type: application/json
 
 {
   "username": "user",
-  "password": "user12345"
+  "password": "user12345-"
 }
+
+### Send POST request to create thread
+POST http://127.0.0.1:8000/application/thread/
+Content-Type: application/json
+
+{
+  "participants": {
+    "second_user": 3,
+    "first_user": 2
+  }
+}
+
+### Send DELETE request to create thread
+DELETE http://127.0.0.1:8000/application/thread/8/
+Content-Type: application/json
 
 
