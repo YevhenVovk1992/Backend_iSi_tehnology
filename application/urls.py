@@ -4,6 +4,7 @@ from .views import *
 
 urlpatterns = [
     path('thread/', ThreadDetail.as_view()),
+    path('message/', MessageViewSet.as_view({'get': 'list', 'post': 'create'})),
     path('thread/list/', ThreadList.as_view()),
     path('thread/<int:pk>/', ThreadDetail.as_view())
 ]

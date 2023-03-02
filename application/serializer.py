@@ -23,5 +23,5 @@ class MessageSerializer(serializers.ModelSerializer):
     thread = serializers.SlugRelatedField(queryset=models.Thread.objects.all(), slug_field='pk')
 
     class Meta:
-        model = models.Thread
-        fields = ('__all__', )
+        model = models.Message
+        fields = ('id', 'sender', 'text', 'thread', 'created', 'is_read')

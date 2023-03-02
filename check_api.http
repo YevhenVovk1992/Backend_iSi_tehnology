@@ -27,4 +27,20 @@ GET http://127.0.0.1:8000/application/thread/list
 Content-Type: application/json
 
 
+### Send GET request to get message list for the thread
+GET http://127.0.0.1:8000/application/message/
+Content-Type: application/json
+
+{
+  "thread": 2
+}
+
+### Send POST request to create message for the thread
+POST http://127.0.0.1:8000/application/message/
+Content-Type: application/json
+
+{
+  "text": "Me text",
+  "thread": 2
+}
 
