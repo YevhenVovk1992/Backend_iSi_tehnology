@@ -56,3 +56,13 @@ class MessageViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, GenericView
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+
+class MessageStatus(mixins.UpdateModelMixin, generics.GenericAPIView):
+    queryset = models.Message.objects.all()
+    serializer_class = serializer.MessageSerializer
+
+    def put(self, request, *args, **kwargs):
+        if request.data.get('is_read', None):
+            return self.update(request, *args, partial=True, **kwargs)
+        return Response({"error": "is_read field not specified"})

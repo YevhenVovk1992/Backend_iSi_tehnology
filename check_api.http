@@ -44,3 +44,11 @@ Content-Type: application/json
   "thread": 2
 }
 
+### Send PUT request to set for the message status
+PUT http://127.0.0.1:8000/application/message/4/status/
+Content-Type: application/json
+
+{
+  "is_read": "true",
+  "thread": 2
+}
