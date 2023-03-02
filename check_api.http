@@ -22,4 +22,9 @@ Content-Type: application/json
 DELETE http://127.0.0.1:8000/application/thread/8/
 Content-Type: application/json
 
+### Send GET request to get thread list
+GET http://127.0.0.1:8000/application/thread/list
+Content-Type: application/json
+
+
 
