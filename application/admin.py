@@ -6,6 +6,7 @@ from .models import *
 # Register your models here.
 TokenAdmin.raw_id_fields = ['user']
 
+
 class MessageAdmin(admin.ModelAdmin):
     list_display = ('id', 'text', 'sender', 'thread', 'created', 'is_read')
     list_filter = ('sender', 'thread')
