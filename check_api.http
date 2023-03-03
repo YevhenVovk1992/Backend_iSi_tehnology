@@ -1,62 +1,81 @@
 ### Get user token.
-POST http://127.0.0.1:8000/api-token-auth/
+POST http://127.0.0.1:8000/api/token/
 Content-Type: application/json
 
 {
-  "username": "user",
-  "password": "user12345-"
+  "username": "user2",
+  "password": "zaq12345-"
 }
+
+### Refresh user token.
+POST http://127.0.0.1:8000/api/token/refresh/
+Content-Type: application/json
+
+{
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3Nzk0NzY2MSwiaWF0IjoxNjc3ODYxMjYxLCJqdGkiOiI5Y2VhNzI3YjlhY2U0NDNlYWIwNzMyYTNiMzIzZjgxMiIsInVzZXJfaWQiOjN9.751q1aMeKNOnnDlzCYPGs9doMc_GpayUBQzVFxFoCKA"
+}
+
 
 ### Send POST request to create thread
 POST http://127.0.0.1:8000/application/thread/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc3ODYyMzcxLCJpYXQiOjE2Nzc4NjEyNjEsImp0aSI6ImU2MDRhMmJkNTkxMjRlMjZhMjdmNTRlZjgzNjg4YmU5IiwidXNlcl9pZCI6M30.YCf7ls34X9hQzIBqRut__Fyy5pkGbwUCI87VfrGisnk
 
 {
   "participants": {
-    "second_user": 3,
-    "first_user": 2
+    "first_user": "1",
+    "second_user": "3"
   }
 }
 
-### Send DELETE request to create thread
-DELETE http://127.0.0.1:8000/application/thread/8/
+### Send DELETE request to delete thread
+DELETE http://127.0.0.1:8000/application/thread/15/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc3ODYxOTg1LCJpYXQiOjE2Nzc4NjEyNjEsImp0aSI6ImJmNGYxOTI3MWQyMTQxODE4MzkwMmUyZThjMDUyMDE2IiwidXNlcl9pZCI6M30.LpdmKcNQWe55NSdjopbuo8XSzS7lVhTuF-pBdW0bdAc
+
 
 ### Send GET request to get thread list
 GET http://127.0.0.1:8000/application/thread/list
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc3ODQ0NzEzLCJpYXQiOjE2Nzc4NDQ0MTMsImp0aSI6ImJmNTc5ZWYyZmM5MzRiZjZiMmFlNmRlMjhlMzY0ZTE3IiwidXNlcl9pZCI6M30.-ro9UHQM3bJRJNiym3l6uQPEgvkGC39zdaPTbrQgm80
 
 
 ### Send GET request to get message list for the thread
 GET http://127.0.0.1:8000/application/message/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc3ODY0Mjg4LCJpYXQiOjE2Nzc4NjEyNjEsImp0aSI6IjJhMGZhMWI5MjcyYzQ0OWQ4OTIzOTI2MDY1YmVmMWI2IiwidXNlcl9pZCI6M30.abB1LtUoT6_yrrjmsWM1YENt134K9Tg-54d5SC2e03k
 
 {
-  "thread": 2
+  "thread": "12"
 }
+
 
 ### Send POST request to create message for the thread
 POST http://127.0.0.1:8000/application/message/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc3ODY2MzYzLCJpYXQiOjE2Nzc4NjEyNjEsImp0aSI6IjM2NmNmOGVmOThiZjQ1ZTlhYTFmM2JjMzQwNmEwNTlmIiwidXNlcl9pZCI6M30.S0Wm29QVPbBn-zbcpKpzNF5GjlxW0KVMAD6-V-57dqE
 
 {
-  "text": "Me text",
-  "thread": 2
+  "text": "My text",
+  "thread": 12
 }
 
+
 ### Send PUT request to set for the message status
-PUT http://127.0.0.1:8000/application/message/4/status/
+PUT http://127.0.0.1:8000/application/message/11/status/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc3ODQ0NzEzLCJpYXQiOjE2Nzc4NDQ0MTMsImp0aSI6ImJmNTc5ZWYyZmM5MzRiZjZiMmFlNmRlMjhlMzY0ZTE3IiwidXNlcl9pZCI6M30.-ro9UHQM3bJRJNiym3l6uQPEgvkGC39zdaPTbrQgm80
 
 {
   "is_read": "true",
-  "thread": 2
+  "thread": 12
 }
 
 ### Send GET request to get all unread message
 GET http://127.0.0.1:8000/application/message/unread/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc3ODY3MDcwLCJpYXQiOjE2Nzc4NjEyNjEsImp0aSI6IjQ1OTcyZjc3Y2NlZTQzZmI5NThhNDk3YjE1NDkxOTZjIiwidXNlcl9pZCI6M30.ZpR67nldOChyatcYF4VGOvd0_q1C9DqoV_S1EBzPmHM
 
 {
-  "thread": 2
+  "thread": 12
 }
