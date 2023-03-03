@@ -1,6 +1,7 @@
 from django.db.models import Q
 from rest_framework import viewsets, mixins, status, generics
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework.viewsets import GenericViewSet
 
 from application import models, serializer
@@ -65,4 +66,17 @@ class MessageStatus(mixins.UpdateModelMixin, generics.GenericAPIView):
     def put(self, request, *args, **kwargs):
         if request.data.get('is_read', None):
             return self.update(request, *args, partial=True, **kwargs)
-        return Response({"error": "is_read field not specified"})
+        return Response({"error": "is_read field not specified"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class UnreadMessage(APIView):
+    """
+
+    """
+    def get(self, request):
+        user_id = request.user.id
+        thread = request.data.get('thread', None)
+        if thread:
+            queryset = models.Message.objects.filter(thread=thread, is_read=False).exclude(sender=user_id).count()
+            return Response({"unread message": str(queryset)}, status=status.HTTP_201_CREATED)
+        return Response({"error": "thread field not specified"}, status=status.HTTP_400_BAD_REQUEST)

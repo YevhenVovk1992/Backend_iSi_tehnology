@@ -52,3 +52,11 @@ Content-Type: application/json
   "is_read": "true",
   "thread": 2
 }
+
+### Send GET request to get all unread message
+GET http://127.0.0.1:8000/application/message/unread/
+Content-Type: application/json
+
+{
+  "thread": 2
+}
