@@ -7,6 +7,6 @@ urlpatterns = [
     path('message/', MessageViewSet.as_view({'get': 'list', 'post': 'create'})),
     path('message/<int:pk>/status/', MessageStatus.as_view()),
     path('message/unread/', UnreadMessage.as_view()),
-    path('thread/list/', ThreadList.as_view()),
-    path('thread/<int:pk>/', ThreadDetail.as_view())
+    path('thread/<int:pk>/', ThreadDetail.as_view()),
+    path('thread/list/', ThreadList.as_view())
 ]
